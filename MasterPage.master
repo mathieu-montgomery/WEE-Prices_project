@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>CLASSROOMS</title>
+     <link rel="stylesheet" type="text/css" href="StyleSheet.css"/>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- Default SiteMapProvider using the Web.sitemap file -->
+    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+    
+    <!-- My custom SiteMapProviders configured in web.config to use  
+           the admin.sitemap, teacher.sitemap and student.sitemap files 
+    -->
+    <asp:SiteMapDataSource ID="StudentSiteMapDataSource" runat="server" SiteMapProvider="StudentSitemap" />
+    <asp:SiteMapDataSource ID="TeacherSiteMapDataSource" runat="server" SiteMapProvider="TeacherSitemap" />
+    <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSitemap" />
+
+    <form id="form1" runat="server">
+        <div> 
+            <div id="title">
+            Welcome to the website to register Classrooms<br />
+            <br />
+            </div>
+            <div id="map">
+                This is where I am :
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                </asp:SiteMapPath>
+            </div>
+
+            <br />
+            <div id="navbar">
+                <asp:LoginView ID="LoginView1" runat="server">
+
+                    <AnonymousTemplate>
+                    Welcome, guest, <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                    </AnonymousTemplate>
+
+                    <LoggedInTemplate>
+                    Welcome <asp:LoginName ID="LoginName1" runat="server" />
+                    <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutPageUrl="loggout.aspx" LogoutAction="Redirect" />
+                    </LoggedInTemplate>
+
+                </asp:LoginView>
+
+                 <asp:LoginView ID="LoginView2" runat="server">
+                 
+                      <AnonymousTemplate>
+                        <asp:TreeView ID="TreeView1" DataSourceID="SiteMapDataSource1" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                        </asp:TreeView>
+                      </AnonymousTemplate>
+
+                       <RoleGroups>
+
+                        <asp:RoleGroup Roles="Student">
+                          <ContentTemplate>
+                            <asp:TreeView ID="TreeView1" DataSourceID="StudentSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                            </asp:TreeView>
+                          </ContentTemplate>
+                        </asp:RoleGroup>
+
+                        <asp:RoleGroup Roles="Teacher">
+                          <ContentTemplate>
+                            <asp:TreeView ID="TreeView2" DataSourceID="TeacherSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                            </asp:TreeView>
+                          </ContentTemplate>
+                        </asp:RoleGroup>
+
+                        <asp:RoleGroup Roles="Admin">
+                          <ContentTemplate>
+                            <asp:TreeView ID="TreeView3" DataSourceID="AdminSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                            </asp:TreeView>
+                          </ContentTemplate>
+                        </asp:RoleGroup>
+         
+                      </RoleGroups>
+                   </asp:LoginView>
+            </div>
+
+            <div id="placeholder_right">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+       
+            <br />
+        </div>
+    </form>
+</body>
+</html>
