@@ -35,7 +35,7 @@ public partial class _admin_CreateSupermarket : System.Web.UI.Page
         // Fill in the parameters in our prepared SQL statement
         sqlCmd.Parameters.AddWithValue("@theName", txtName.Text);
         sqlCmd.Parameters.AddWithValue("@theAdress", txtAdress.Text);
-        sqlCmd.Parameters.AddWithValue("@theManager", txtManager.Text);
+        sqlCmd.Parameters.AddWithValue("@theManager", DropDownList1.SelectedValue);
         sqlCmd.Parameters.AddWithValue("@theEmail", txtEmail.Text);
         sqlCmd.Parameters.AddWithValue("@theTelephone", txtTelephon.Text);
 
@@ -50,8 +50,15 @@ public partial class _admin_CreateSupermarket : System.Web.UI.Page
 
         txtName.Text = "";
         txtAdress.Text = "";
-        txtManager.Text = "";
         txtEmail.Text = "";
         txtTelephon.Text = "";
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CreateSupermarketAccount.aspx");
     }
 }

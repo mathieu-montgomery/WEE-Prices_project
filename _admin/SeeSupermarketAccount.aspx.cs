@@ -22,4 +22,8 @@ public partial class _admin_ManageSupermarket : System.Web.UI.Page
     {
 
     }
+    protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

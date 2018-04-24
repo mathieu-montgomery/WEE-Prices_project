@@ -9,7 +9,7 @@
                             <ContentTemplate>
                                 <table>
                                     <tr>
-                                        <td align="center" colspan="2">Sign Up for Your New Account</td>
+                                        <td align="center" colspan="2">Create an account for a manager</td>
                                     </tr>
                                     <tr>
                                         <td align="right">

@@ -5,9 +5,9 @@
         <siteMapNode url="_admin/CreateSupermarket.aspx" title="Create supermarket"  description="" />
         <siteMapNode url="_admin/SeeSupermarket.aspx" title="See supermarket"  description="" />
       </siteMapNode>
-      <siteMapNode title="Manage supermarkets account"  description="" >
-        <siteMapNode url="_admin/CreateSupermarketAccount.aspx" title="Create supermarket"  description="" />
-        <siteMapNode url="_admin/SeeSupermarketAccount.aspx" title="See supermarket"  description="" />
+      <siteMapNode title="Manage managers"  description="" >
+        <siteMapNode url="_admin/CreateSupermarketAccount.aspx" title="Create manager account"  description="" />
+        <siteMapNode url="_admin/SeeSupermarketAccount.aspx" title="See managers"  description="" />
       </siteMapNode>
       <siteMapNode url="_admin/SeeFeedback.aspx" title="See feedback"  description="" />
       <siteMapNode url="About.aspx" title="About"  description="" />
