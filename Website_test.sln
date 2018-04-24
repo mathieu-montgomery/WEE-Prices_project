@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WEE-Prices_project", ".", "{FF61E15A-E945-4037-B45F-4D48751A73D2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/WEE-Prices_project"
+		Debug.AspNetCompiler.PhysicalPath = "..\WEE-Prices_project\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WEE-Prices_project\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WEE-Prices_project"
+		Release.AspNetCompiler.PhysicalPath = "..\WEE-Prices_project\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WEE-Prices_project\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "11673"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF61E15A-E945-4037-B45F-4D48751A73D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF61E15A-E945-4037-B45F-4D48751A73D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
