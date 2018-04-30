@@ -31,11 +31,14 @@ public partial class _admin_CreateSupermarket : System.Web.UI.Page
 
         // Create an executable SQL command containing our SQL statement and the database connection
         SqlCommand sqlCmd = new SqlCommand(sqlStr, con);
-     
+        
         // Fill in the parameters in our prepared SQL statement
         sqlCmd.Parameters.AddWithValue("@theName", txtName.Text);
         sqlCmd.Parameters.AddWithValue("@theAdress", txtAdress.Text);
-        sqlCmd.Parameters.AddWithValue("@theManager", DropDownList1.SelectedValue);
+        if(check_box_no_manager.Checked)
+            sqlCmd.Parameters.AddWithValue("@theManager", DBNull.Value);
+        else
+            sqlCmd.Parameters.AddWithValue("@theManager", DropDownList1.SelectedValue);
         sqlCmd.Parameters.AddWithValue("@theEmail", txtEmail.Text);
         sqlCmd.Parameters.AddWithValue("@theTelephone", txtTelephon.Text);
 
@@ -60,5 +63,9 @@ public partial class _admin_CreateSupermarket : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e)
     {
         Response.Redirect("CreateSupermarketAccount.aspx");
+    }
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
 }
