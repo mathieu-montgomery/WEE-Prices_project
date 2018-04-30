@@ -10,9 +10,11 @@
     <asp:TextBox ID="txtAdress" runat="server"></asp:TextBox><br /> 
     <asp:Label ID="Label2" runat="server" Text="Manager"></asp:Label><br />
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="UserName" DataValueField="UserId" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:ListItem Value="NULL">No manager</asp:ListItem>
     </asp:DropDownList>
     &nbsp;&nbsp;
     <asp:Button ID="Button2" runat="server" Text="Create a manager" OnClick="Button2_Click" />
+    <asp:CheckBox ID="check_box_no_manager" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="No manager account" />
     <br />  
     <asp:Label ID="Label1" runat="server" Text="Email"></asp:Label><br />
     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>  <br />  
