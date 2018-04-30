@@ -7,9 +7,9 @@
     This website is from a project for Web Engeniering. It is an ASP.NET Web application containing all the fings we have seen in the lesson.</p>
 <p>
     There are three types of users :<br />
-&nbsp;&nbsp;&nbsp; - the user : can search for product and give a rating for the products.<br />
-&nbsp;&nbsp;&nbsp; - the supermarket manager : can manage (create edit delete) their products so there are shown on the website.<br />
-&nbsp;&nbsp;&nbsp; - the the admin : he can do all and manage (create edit delete) the products/supermarkets/manager accounts.
+&nbsp;&nbsp;&nbsp; - the user : can search for any product and give a rating for the products.<br />
+&nbsp;&nbsp;&nbsp; - the supermarket manager : can manage (create edit delete) their products, so they are shown on the website.<br />
+&nbsp;&nbsp;&nbsp; - the admin : has all permissions including creating, editing and deleting the products and supermarkets on top of that he can manage accounts and see feedback.
 </p>
 </asp:Content>
 

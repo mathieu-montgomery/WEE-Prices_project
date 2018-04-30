@@ -3,12 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h3>Select a supermarket</h3>
+    <h3>Search for products</h3>
     <asp:DropDownList ID="SelectSupermarket" runat="server" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="supermarket_id" AutoPostBack="true" ></asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT supermarket.name, product_supermarket.supermarket_id FROM product_supermarket INNER JOIN supermarket ON product_supermarket.supermarket_id = supermarket.Id"></asp:SqlDataSource>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    <input id="Submit1" type="submit" value="submit" /><asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT supermarket.name, product_supermarket.supermarket_id FROM product_supermarket INNER JOIN supermarket ON product_supermarket.supermarket_id = supermarket.Id"></asp:SqlDataSource>
     <br /><br />
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="Id">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" DataSourceID="SqlDataSource1" DataKeyNames="Id">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Nr." SortExpression="Id" InsertVisible="False" ReadOnly="True" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="name" HeaderText="Product Name" SortExpression="name" ItemStyle-HorizontalAlign="Center"/>
