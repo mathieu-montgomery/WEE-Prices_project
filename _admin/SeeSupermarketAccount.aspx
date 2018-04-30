@@ -22,8 +22,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <br />
     <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT aspnet_Users.UserId, aspnet_Users.UserName, supermarket.name FROM aspnet_Users INNER JOIN aspnet_UsersInRoles ON aspnet_Users.UserId = aspnet_UsersInRoles.UserId INNER JOIN aspnet_Roles ON aspnet_UsersInRoles.RoleId = aspnet_Roles.RoleId INNER JOIN supermarket ON aspnet_Users.UserId = supermarket.manager WHERE (aspnet_Roles.RoleName = 'manager')" ID="SqlDataSource1" OnSelecting="SqlDataSource1_Selecting" DeleteCommand="DELETE FROM aspnet_UsersInRoles WHERE [UserId] = @Id DELETE FROM aspnet_Membership WHERE [UserId] = @Id DELETE FROM aspnet_Users WHERE [UserId] = @Id" UpdateCommand="UPDATE aspnet_Users SET UserName = FROM aspnet_Users INNER JOIN aspnet_UsersInRoles ON aspnet_Users.UserId = aspnet_UsersInRoles.UserId INNER JOIN aspnet_Roles ON aspnet_UsersInRoles.RoleId = aspnet_Roles.RoleId WHERE [UserId] = @Id">
       <DeleteParameters>

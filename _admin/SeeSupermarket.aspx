@@ -22,8 +22,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <br />
     <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT supermarket.name, supermarket.adress, supermarket.telephone, supermarket.email, supermarket.Id, aspnet_Users.UserName FROM supermarket INNER JOIN aspnet_Users ON supermarket.manager = aspnet_Users.UserId" ID="SqlDataSource1" DeleteCommand="DELETE FROM [supermarket] WHERE [Id] = @Id" InsertCommand="INSERT INTO [supermarket] ([name], [adress], [manager], [telephone], [email]) VALUES (@name, @adress, @manager, @telephone, @email)" 
         UpdateCommand="UPDATE [supermarket] SET [name] = @name, [adress] = @adress, [manager] = @manager, [telephone] = @telephone, [email] = @email WHERE [Id] = @Id" OnSelecting="SqlDataSource1_Selecting">
