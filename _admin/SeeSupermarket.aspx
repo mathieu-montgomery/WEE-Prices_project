@@ -23,28 +23,28 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
+
+
+
     <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT supermarket.name, supermarket.adress, supermarket.telephone, supermarket.email, supermarket.Id, aspnet_Users.UserName FROM supermarket INNER JOIN aspnet_Users ON supermarket.manager = aspnet_Users.UserId" ID="SqlDataSource1" DeleteCommand="DELETE FROM [supermarket] WHERE [Id] = @Id" InsertCommand="INSERT INTO [supermarket] ([name], [adress], [manager], [telephone], [email]) VALUES (@name, @adress, @manager, @telephone, @email)" 
-        UpdateCommand="UPDATE [supermarket] SET [name] = @name, [adress] = @adress, [manager] = @manager, [telephone] = @telephone, [email] = @email WHERE [Id] = @Id" OnSelecting="SqlDataSource1_Selecting">
+        UpdateCommand="UPDATE [supermarket] SET [name] = @name, [adress] = @adress, [manager] = @UserName, [telephone] = @telephone, [email] = @email WHERE [Id] = @Id" OnSelecting="SqlDataSource1_Selecting">
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32" />
         </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="Name" Type="String" />
-            <asp:Parameter Name="Adress" Type="String" />
-            <asp:Parameter Name="Manager" Type="String" />
-            <asp:Parameter Name="Telephone" Type="String" />
-            <asp:Parameter Name="Email" Type="String" />
-        </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="Name" Type="String" />
             <asp:Parameter Name="Adress" Type="String" />
-            <asp:ControlParameter ControlID="DropDownList1" Name="Manager" PropertyName="SelectedValue" Type="Object" />
+            <asp:Parameter Name="UserName"/>
             <asp:Parameter Name="Telephone" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="Id" />
         </UpdateParameters>
     </asp:SqlDataSource>
+
+
     <br />
+
+
     <asp:SqlDataSource runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [adress], [email], [telephone], [Id] FROM [supermarket] WHERE ([manager] is null)" ID="SqlDataSource2" DeleteCommand="DELETE FROM [supermarket] WHERE [Id] = @Id" InsertCommand="INSERT INTO [supermarket] ([name], [adress], [email], [telephone]) VALUES (@name, @adress, @email, @telephone)" UpdateCommand="UPDATE [supermarket] SET [name] = @name, [adress] = @adress, [email] = @email, [telephone] = @telephone WHERE [Id] = @Id" OnSelecting="SqlDataSource1_Selecting">
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32" />
@@ -70,9 +70,33 @@
     <br />
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT aspnet_Users.UserName, aspnet_Users.UserId FROM aspnet_Users INNER JOIN aspnet_UsersInRoles ON aspnet_Users.UserId = aspnet_UsersInRoles.UserId INNER JOIN aspnet_Roles ON aspnet_UsersInRoles.RoleId = aspnet_Roles.RoleId WHERE (aspnet_Roles.RoleName = 'manager')"></asp:SqlDataSource>
     
-    <asp:ListView runat="server" DataSourceID="SqlDataSource1" ID="ListView1" DataKeyNames="Id">
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+    
+    <asp:ListView runat="server" DataSourceID="SqlDataSource1" ID="ManagerList" DataKeyNames="Id">
         <AlternatingItemTemplate>
-            <tr style="background-color: #FAFAD2;color: #284775;">
+            <tr style="">
                 <td>
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -90,17 +114,17 @@
                     <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="IdLabel" runat="server" Visible="false" Text='<%# Eval("Id") %>' />
+                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>'/>
                 </td>
                 <td>
-                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>'/>
+                    <asp:Label ID="IdLabel" visible="false" runat="server" Text='<%# Eval("Id") %>' />
                 </td>
             </tr>
         </AlternatingItemTemplate>
         <EditItemTemplate>
-            <tr style="background-color: #FFCC66;color: #000080;">
+            <tr style="">
                 <td>
-                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" OnClick="CheckManager" />
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                 </td>
                 <td>
@@ -115,28 +139,28 @@
                 <td>
                     <asp:TextBox ID="emailTextBox" runat="server" Text='<%# Bind("email") %>' />
                 </td
-
-                <td>
-                    <asp:Label ID="IdLabel1" runat="server" Visible="false" Text='<%# Eval("Id") %>' />
-                </td>
                 <td>
 
-                </td>                                
-                <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="UserName" DataValueField="UserId"/>
                 </td>  
+
+                <td>
+                    <asp:DropDownList ID="ManagerDropDownListInsert" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource3" DataTextField="UserName" DataValueField="UserID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:TextBox ID="ManagerFKTextBoxEdit" runat="server" Visible="false" Text='<%# Bind("UserName") %>' />                
+                </td>
+                
+                              
 
             </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
-            <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+            <table runat="server" style="">
                 <tr>
-                    <td>No data was returned.</td>
+                    <td>No supermarket was returned.</td>
                 </tr>
             </table>
         </EmptyDataTemplate>
         <ItemTemplate>
-            <tr style="background-color: #FFFBD6;color: #333333;">
+            <tr style="">
                 <td>
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -154,10 +178,10 @@
                     <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="IdLabel" runat="server" Visible="false" Text='<%# Eval("Id") %>' />
+                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>'/>
                 </td>
                 <td>
-                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>'/>
+                    <asp:Label ID="IdLabel" visible="false" runat="server" Text='<%# Eval("Id") %>' />
                 </td>
             </tr>
         </ItemTemplate>
@@ -165,15 +189,16 @@
             <table runat="server">
                 <tr runat="server">
                     <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                            <tr runat="server" style="background-color: #FFFBD6;color: #333333;">
+                        <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                            <tr runat="server" style="">
                                 <th runat="server"></th>
                                 <th runat="server">Name</th>
                                 <th runat="server">Adress</th>
                                 <th runat="server">Telephone</th>
                                 <th runat="server">Email</th>
-                                <th runat="server"></th>
-                                <th runat="server">Manager Account</th>
+                                <th runat="server">Manager</th>
+                                <th id="Th2" runat="server" visible="false">Id</th>
+
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
                             </tr>
@@ -181,12 +206,13 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;"></td>
+                    <td runat="server" style="">
+                    </td>
                 </tr>
             </table>
         </LayoutTemplate>
         <SelectedItemTemplate>
-            <tr style="background-color: #FFCC66;font-weight: bold;color: #000080;">
+            <tr style="">
                 <td>
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -204,14 +230,25 @@
                     <asp:Label ID="emailLabel" runat="server" Text='<%# Eval("email") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="IdLabel" runat="server" Visible="false" Text='<%# Eval("Id") %>' />
+                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("Manager") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
+                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                 </td>
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
+
+
+
+
+
+
+
+
+
+
+
    
     <br />
     Supermarket with no manager account :
