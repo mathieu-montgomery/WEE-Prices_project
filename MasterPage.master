@@ -18,9 +18,9 @@
     <!-- My custom SiteMapProviders configured in web.config to use  
            the admin.sitemap, teacher.sitemap and student.sitemap files 
     -->
-    <asp:SiteMapDataSource ID="StudentSiteMapDataSource" runat="server" SiteMapProvider="StudentSitemap" />
-    <asp:SiteMapDataSource ID="TeacherSiteMapDataSource" runat="server" SiteMapProvider="TeacherSitemap" />
-    <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSitemap" />
+    <asp:SiteMapDataSource ID="UserSiteMapDataSource" runat="server" SiteMapProvider="UserSiteMap" />
+    <asp:SiteMapDataSource ID="ManagerSiteMapDataSource" runat="server" SiteMapProvider="ManagerSiteMap" />
+    <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSiteMap" />
 
     <form id="form1" runat="server">
         <div> <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
@@ -58,16 +58,16 @@
 
                        <RoleGroups>
 
-                        <asp:RoleGroup Roles="Student">
+                        <asp:RoleGroup Roles="User">
                           <ContentTemplate>
-                            <asp:TreeView ID="TreeView1" DataSourceID="StudentSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                            <asp:TreeView ID="TreeView1" DataSourceID="UserSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
                             </asp:TreeView>
                           </ContentTemplate>
                         </asp:RoleGroup>
 
-                        <asp:RoleGroup Roles="Teacher">
+                        <asp:RoleGroup Roles="Manager">
                           <ContentTemplate>
-                            <asp:TreeView ID="TreeView2" DataSourceID="TeacherSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
+                            <asp:TreeView ID="TreeView2" DataSourceID="ManagerSiteMapDataSource" runat="server" NodeIndent="10" ShowExpandCollapse="False" NodeStyle-CssClass="menunode" HoverNodeStyle-CssClass="menunodehover" SelectedNodeStyle-CssClass="menunodeselected" RootNodeStyle-CssClass="rootnode" ParentNodeStyle-CssClass="parentnode">
                             </asp:TreeView>
                           </ContentTemplate>
                         </asp:RoleGroup>

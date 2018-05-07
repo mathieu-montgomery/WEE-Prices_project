@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="Default.aspx" title="Home"  description="">
-        <siteMapNode url="_user/ViewBooking.aspx" title="View booking"  description="" />
+    <siteMapNode url="_user/Compare.aspx" title="Compare products"  description="" />
+    <siteMapNode url="_user/Products.aspx" title="Products per supermarket"  description="" />
     </siteMapNode>
 </siteMap>
